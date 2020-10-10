@@ -1,0 +1,48 @@
+#display scroll bar in the screen window
+hardstatus on
+hardstatus alwayslastline
+hardstatus string '%{gk}[ %{G}%H %{g}][%= %{wk}%?%-Lw%?%{=b kR}(%{W}%n*%f %t%?(%u)%?%{=b kR})%{= kw}%?%+Lw%?%?%= %{g}][%{Y}%l%{g}]%{=b C}[ %m/%d %c ]%{W}'
+
+# set the startup message
+startup_message off #no welcome message
+term screen-256color
+# 256 colors
+#attrcolor b ".I"
+#termcapinfo term 'Co#256:AB=\E[48;5;%dm:AF=\E[38;5;%dm'
+#defbce "on"
+
+shell -$SHELL  #make .bashrc .profile etc to be effective in screen
+
+# make Chinese encoder to be effective
+defencoding UTF-8
+encoding UTF-8 UTF-8
+
+#termcapinfo xterm|xterms|xs ti@:te=\E[2]  # solve the problem that can not scroll up with mouse
+termcapinfo xterm* ti@:te@
+
+defscrollback 100000  #screen scrollback buffer number
+
+# some shortcut map
+bind k kill
+
+
+#termcapinfo xterm* ti@:te@
+
+#deflogin on
+#autodetach on
+#vbell off
+#vbell_msg "   Wuff  ----  Wuff!!  "
+#defscrollback 11024
+#bind ^k
+#bind ^\
+#bind \\ quit
+#bind K kill
+#bind I login on
+#bind O login off
+#bind } history
+#termcapinfo vt100 dl=5\E[M
+#hardstatus on
+#termcapinfo xterm*|rxvt*|kterm*|Eterm* hs:ts=\E]0;:fs=\007:ds=\E]0;\007
+#termcapinfo xterm*|linux*|rxvt*|Eterm* OP
+#termcapinfo xterm 'is=\E[r\E[m\E[2J\E[H\E[?7h\E[?1;4;6l'
+#defnonblock 5
