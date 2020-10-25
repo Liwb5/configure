@@ -5,12 +5,12 @@ export HOME=$1
 
 install_self(){
     echo "install self"
-    # PWD_DIR=$(pwd)
-    # if [ ! -f $HOME/configure ]; then
-    #     cd $HOME && ln -s $PWD_DIR && cd -
-    # else
-    #     echo "$HOME/configure is already exists!"
-    # fi
+    PWD_DIR=$(pwd)
+    if [ ! -f $HOME/configure ]; then
+        cd $HOME && ln -s $PWD_DIR && cd -
+    else
+        echo "$HOME/configure is already existed!"
+    fi
 }
 
 install_env(){
@@ -20,19 +20,25 @@ install_env(){
         sed -i "s|^export HOME=.*$|export HOME=$HOME|" env.sh  # replace HOME environment
         cd -
     else
-        echo "$HOME/env.sh already exists!"
+        echo "$HOME/env.sh already existed!"
     fi
+}
 
+install_zsh(){
     if [ ! -f $HOME/.zshrc ]; then
         cd $HOME && ln -s $HOME/configure/shell/.zshrc && cd -
     else
-        echo "$HOME/.zshrc is already exists!"
+        echo "$HOME/.zshrc is already existed!"
     fi
 
     if [ ! -d $HOME/.oh-my-zsh ]; then
-        cd $HOME && ln -s $HOME/configure/shell/.oh-my-zsh && cd -
+        if [ ! -d $HOME/configure/shell/.oh-my-zsh ]; then
+            echo "$HOME/configure/shell/.oh-my-zsh is not existed"
+        else
+            cd $HOME && ln -s $HOME/configure/shell/.oh-my-zsh && cd -
+        fi
     else
-        echo "$HOME/.oh-my-zsh is already exists!"
+        echo "$HOME/.oh-my-zsh is already existed!"
     fi
 }
 
@@ -41,12 +47,16 @@ install_vimrc(){
     if [ ! -f $HOME/.vimrc ]; then
         cd $HOME && ln -s $HOME/configure/vim/.vimrc && cd -
     else
-        echo "$HOME/.vimrc is already exists!"
+        echo "$HOME/.vimrc is already existed!"
     fi
     if [ ! -d $HOME/.vim ]; then
-        cd $HOME && ln -s $HOME/configure/vim/.vim && cd -
+        if [ ! -d $HOME/configure/vim/.vim ]; then
+            echo "$HOME/configure/vim/.vim is not existed"
+        else
+            cd $HOME && ln -s $HOME/configure/vim/.vim && cd -
+        fi
     else
-        echo "$HOME/.vim is already exists!"
+        echo "$HOME/.vim is already existed!"
     fi
 }
 
@@ -55,7 +65,7 @@ install_tmux_conf(){
     if [ ! -f $HOME/.tmux.conf ]; then
         cd $HOME && ln -s $HOME/configure/tmux/.tmux.conf && cd -
     else
-        echo "$HOME/.tmux.conf is already exists!"
+        echo "$HOME/.tmux.conf is already existed!"
     fi
 }
 
@@ -64,7 +74,7 @@ install_jumbo(){
     if [ ! -d $HOME/.jumbo ]; then
         cd $HOME && ln -s $HOME/configure/.jumbo && cd -
     else
-        echo "$HOME/.jumbo is already exists!"
+        echo "$HOME/.jumbo is already existed!"
     fi
 }
     
