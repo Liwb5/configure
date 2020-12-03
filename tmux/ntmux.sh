@@ -1,4 +1,5 @@
 #!/bin/sh 
+#usage: sh ntmux.sh my_name 10
 if [ $# != 2 ]; then
     echo "must specified tmux session name and window number"
     exit 1

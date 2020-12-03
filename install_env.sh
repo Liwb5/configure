@@ -86,6 +86,7 @@ if [ "$2" == "all" ];then
     install_env
     install_vimrc
     install_tmux_conf
+    install_zsh
     install_jumbo
 else
     install_$1
