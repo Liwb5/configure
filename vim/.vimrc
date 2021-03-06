@@ -192,9 +192,12 @@ set mouse=r
 set confirm
 set backspace=2   "可随时用退格键删除
 set whichwrap=b,s,<,>,[,]  "默认情况下，在 VIM 中当光标移到一行最左边的时候，我们继续按左键，光标不能回到上一行的最右边。
-set noundofile  " 文件就不会产生.un文件
 set nobackup
 set noswapfile  " 文件就不会产生.swp文件
+if has("persistent_undo")
+    set undofile
+    set undodir=$HOME/.vim/undo
+endif
 " augroup BgHighlight
 "     autocmd!
 "     autocmd WinEnter * set colorcolumn=90
